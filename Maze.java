@@ -1,19 +1,17 @@
-import java.util.Scanner;
-import java.io.File;
-import java.util.ArrayList;
-import java.io.FileNotFoundException;
+import java.util.*;
+import java.io.*;
 public class Maze{
-  public ArrayList getfile(String fileName) throws FileNotFoundException{
-    File f = new File(fileName);
-    Scanner in = new Scanner(f);
-    ArrayList<String> scanFile = new ArrayList<String>();
-    while (in.hasNext()){
-      scanFile.add(in.next());
+    private char[][]maze;
+    private boolean animate;
+    public char[][] getFile(String fileName) throws FileNotFoundException{
+      File f = new File(fileName);
+      Scanner in = new Scanner(f);
+      char[][] scanFile = new char[][];
+      for (int i = 0; i < c)
+      return scanFile;
     }
-    return scanFile;
-  }
-  public static void main(String args[]){
-    ArrayList<String> a = new ArrayList<String>();
-    a = getfile(Maze1);
-  }
+    public static void main(String args[]){
+      char[][] a = new char[][];
+      a = getFile("Maze1.txt");
+    }
 }
