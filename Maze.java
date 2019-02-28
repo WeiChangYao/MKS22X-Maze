@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class Maze{
+    private int count;
     private char[][]maze;
     private boolean animate;
     public char[][] getFile(String fileName) throws FileNotFoundException{
@@ -49,19 +50,46 @@ public class Maze{
       boolean stuck = false;
       while(stuck == false){
         if (maze[row-1][col] == ' '){
-          maze[row-1][col]=='@';
+          maze[row-1][col]='@';
+          count++;
           return solve(row-1,col);
         }
         if (maze[row+1][col] == ' '){
-          maze[row+1][col]=='@';
+          maze[row+1][col]='@';
+          count++;
           return solve(row+1,col);
         }
         if (maze[row][col-1] == ' '){
-          maze[row][col-1]=='@';
+          maze[row][col-1]='@';
+          count++;
           return solve(row,col-1);
         }
         if (maze[row][col+1] == ' '){
-          maze[row][col+1]=='@';
+          maze[row][col+1]='@';
+          count++;
+          return solve(row,col+1);
+        }
+        stuck = true;
+      }
+      while(stuck = true){
+        if (maze[row-1][col] == '@'){
+          maze[row-1][col]='.';
+          count--;
+          return solve(row-1,col);
+        }
+        if (maze[row+1][col] == '@'){
+          maze[row+1][col]='.';
+          count--;
+          return solve(row+1,col);
+        }
+        if (maze[row][col-1] == '@'){
+          maze[row][col-1]='.';
+          count--;
+          return solve(row,col-1);
+        }
+        if (maze[row][col+1] == '@'){
+          maze[row][col+1]='.';
+          count--;
           return solve(row,col+1);
         }
       }
