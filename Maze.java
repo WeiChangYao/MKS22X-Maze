@@ -29,18 +29,49 @@ public class Maze{
       return str;
     }
     public int solve(){
-      int startX = 0;
-      int startY = 0;
+      int startR = 0;
+      int startC = 0;
       for (int i =0;i < maze.length;i++){
         for (int j=0; j<maze[0].length;j++){
           if (maze[i][j] = S){
-            startX = i;
-            startY = j;
+            startR = i;
+            startC = j;
             maze[i][j] = '@';
           }
         }
       }
-      return solve(startX,startY);
+      return solve(startR,startC);
+    }
+
+
+    private int solve(int row, int col){
+    //********
+      boolean stuck = false;
+      while(stuck == false){
+        if (maze[row-1][col] == ' '){
+          maze[row-1][col]=='@';
+          return solve(row-1,col);
+        }
+        if (maze[row+1][col] == ' '){
+          maze[row+1][col]=='@';
+          return solve(row+1,col);
+        }
+        if (maze[row][col-1] == ' '){
+          maze[row][col-1]=='@';
+          return solve(row,col-1);
+        }
+        if (maze[row][col+1] == ' '){
+          maze[row][col+1]=='@';
+          return solve(row,col+1);
+        }
+      }
+    //********
+      if(animate){
+        clearTerminal();
+        System.out.println(this);
+        wait(20);
+      }
+      return -1;
     }
 
 
