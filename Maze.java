@@ -28,8 +28,20 @@ public class Maze{
       }
       return str;
     }
-
-
+    public int solve(){
+      int startX = 0;
+      int startY = 0;
+      for (int i =0;i < maze.length;i++){
+        for (int j=0; j<maze[0].length;j++){
+          if (maze[i][j] = S){
+            startX = i;
+            startY = j;
+            maze[i][j] = '@';
+          }
+        }
+      }
+      return solve(startX,startY);
+    }
 
 
 
