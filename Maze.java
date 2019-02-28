@@ -92,6 +92,7 @@ public class Maze{
           count--;
           return solve(row,col+1);
         }
+        return -1;
       }
     //********
       if(animate){
