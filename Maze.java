@@ -18,6 +18,18 @@ public class Maze{
     public void clearTerminal(){
       System.out.println("\033[2J\033[1;1H");
     }
+    public String toString(){
+      String str = "";
+      for (int i =0;i < maze.length;i++){
+        for (int j=0; j<maze[0].length;j++){
+          str+= maze[i][j];
+        }
+        str+= "\n";
+      }
+      return str;
+    }
+
+
 
 
 
