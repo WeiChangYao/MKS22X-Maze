@@ -42,7 +42,7 @@ public class Maze{
       }
       return str;
     }
-    public int solve(){
+    public int solve()throws InterruptedException{
       int startR = 0;
       int startC = 0; 
       for (int i =0;i < maze.length;i++){
@@ -58,7 +58,7 @@ public class Maze{
     }
 
 
-    private int solve(int row, int col){
+    private int solve(int row, int col)throws InterruptedException{
     //********
         if (maze[row-1][col] == 'E'){
           return count;            //if it's E, return count
@@ -120,20 +120,18 @@ public class Maze{
         return -1;
       }
     //********
-      /*if(animate){
+      if(animate){
         clearTerminal();
         System.out.println(this);
         wait(20);
-      } */
+      } 
       return -1;
     }
 
-	public static void main(String[] args)  throws FileNotFoundException{
+	public static void main(String[] args){
 
 		try {
-			Maze m = new Maze("Maze1.txt");
-			//m.solve();
-			System.out.println(m);
+			System.out.println(getFile("Maze1.txt"));
 
 		} catch (FileNotFoundException e) {}
 	}
