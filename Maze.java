@@ -8,7 +8,7 @@ public class Maze{
       File f = new File(fileName);
       Scanner in = new Scanner(f);
       //char[][] scanFile = new char[][];
-      ArrayList<char> scanFile = new ArrayList<char>();
+      ArrayList<String> scanFile = new ArrayList<String>();
       while (in.hasNext()){
         scanFile.add(in.next());
       }
@@ -42,7 +42,7 @@ public class Maze{
       int startC = 0;
       for (int i =0;i < maze.length;i++){
         for (int j=0; j<maze[0].length;j++){
-          if (maze[i][j] = S){
+          if (maze[i][j] == 'S'){
             startR = i;
             startC = j;
             maze[i][j] = '@';
@@ -103,18 +103,19 @@ public class Maze{
         return -1;
       }
     //********
-      if(animate){
+      /*if(animate){
         clearTerminal();
         System.out.println(this);
         wait(20);
-      }
+      } */
       return -1;
     }
 
 
 
     public static void main(String args[]){
-      char[][] a = new char[][];
-      a = getFile("Maze1.txt");
+     /* char[][] a =  new char[10][];
+      a.getFile("Maze1.txt");
+      System.out.println(a);*/
     }
 }
