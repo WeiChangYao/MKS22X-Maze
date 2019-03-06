@@ -7,7 +7,6 @@ public class Maze{
     public static char[][] getFile(String fileName) throws FileNotFoundException{
       File f = new File(fileName);
       Scanner in = new Scanner(f);
-      //char[][] scanFile = new char[][];
       ArrayList<String> scanFile = new ArrayList<String>();
       while (in.hasNextLine()){
         scanFile.add(in.nextLine());   //adds lines to array list
@@ -61,6 +60,18 @@ public class Maze{
 
     private int solve(int row, int col){
     //********
+        if (maze[row-1][col] == 'E'){
+          return count;            //if it's E, return count
+        }
+        if (maze[row+1][col] == 'E'){
+          return count;
+        }
+        if (maze[row][col-1] == 'E'){
+          return count;
+        }
+        if (maze[row][col+1] == 'E'){
+          return count;
+        }
       boolean stuck = false;
       while(stuck == false){     //while it is not stuck
         if (maze[row-1][col] == ' '){
