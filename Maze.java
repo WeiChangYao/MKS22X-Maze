@@ -4,19 +4,20 @@ public class Maze{
     private int count;
     private char[][]maze;
     private boolean animate;
-    public char[][] getFile(String fileName) throws FileNotFoundException{
+    public static char[][] getFile(String fileName) throws FileNotFoundException{
       File f = new File(fileName);
       Scanner in = new Scanner(f);
       //char[][] scanFile = new char[][];
       ArrayList<String> scanFile = new ArrayList<String>();
-      while (in.hasNext()){
-        scanFile.add(in.next());
+      while (in.hasNextLine()){
+        scanFile.add(in.nextLine());   //adds lines to array list
       }
       int size = scanFile.size();
-      char[][] file = new char[size][];
+      int sizeTwo = scanFile.get(0).length();
+      char[][] file = new char[size][sizeTwo];
       for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
-          file[i][j] = scanFile.get(i).charAt(j);
+        for(int j = 0; j < sizeTwo; j++){
+          file[i][j] = scanFile.get(i).charAt(j);  //convert arrayList into a 2d array char by char
         }
       }
       return file;
@@ -44,7 +45,7 @@ public class Maze{
     }
     public int solve(){
       int startR = 0;
-      int startC = 0;
+      int startC = 0; 
       for (int i =0;i < maze.length;i++){
         for (int j=0; j<maze[0].length;j++){
           if (maze[i][j] == 'S'){
@@ -61,11 +62,11 @@ public class Maze{
     private int solve(int row, int col){
     //********
       boolean stuck = false;
-      while(stuck == false){
+      while(stuck == false){     //while it is not stuck
         if (maze[row-1][col] == ' '){
-          maze[row-1][col]='@';
-          count++;
-          return solve(row-1,col);
+          maze[row-1][col]='@';     //go down and see if the space is blank
+          count++;                  //add an @ and increase count
+          return solve(row-1,col);  //continue solving starting from the new space
         }
         if (maze[row+1][col] == ' '){
           maze[row+1][col]='@';
@@ -82,13 +83,13 @@ public class Maze{
           count++;
           return solve(row,col+1);
         }
-        stuck = true;
+        stuck = true;              //if none of the direction has an empty space, stuck turns true
       }
       while(stuck = true){
-        if (maze[row-1][col] == '@'){
-          maze[row-1][col]='.';
+        if (maze[row-1][col] == '@'){  //searches for an @
+          maze[row-1][col]='.';        //if there's an @, it becomes '.'
           count--;
-          return solve(row-1,col);
+          return solve(row-1,col);     //starts solving with new direction
         }
         if (maze[row+1][col] == '@'){
           maze[row+1][col]='.';
@@ -116,11 +117,14 @@ public class Maze{
       return -1;
     }
 
+	public static void main(String[] args)  throws FileNotFoundException{
 
+		try {
+			Maze m = new Maze("Maze1.txt");
+			//m.solve();
+			System.out.println(m);
 
-    public static void main(String args[]){
-     /* char[][] a =  new char[10][];
-      a.getFile("Maze1.txt");
-      System.out.println(a);*/
-    }
+		} catch (FileNotFoundException e) {}
+	}
+  
 }
