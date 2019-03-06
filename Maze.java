@@ -7,11 +7,19 @@ public class Maze{
     public char[][] getFile(String fileName) throws FileNotFoundException{
       File f = new File(fileName);
       Scanner in = new Scanner(f);
-      char[][] scanFile = new char[][];
-      for (int i = 0; i < c; i++){
-
+      //char[][] scanFile = new char[][];
+      ArrayList<char> scanFile = new ArrayList<char>();
+      while (in.hasNext()){
+        scanFile.add(in.next());
       }
-      return scanFile;
+      int size = scanFile.size();
+      char[][] file = new char[size][];
+      for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j++){
+          file[i][j] = scanFile.get(i).charAt(j);
+        }
+      }
+      return file;
     }
     public void setAnimate(boolean b){
       animate = b;
