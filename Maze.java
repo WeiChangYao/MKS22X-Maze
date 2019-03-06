@@ -21,6 +21,11 @@ public class Maze{
       }
       return file;
     }
+    public Maze(String filename) throws FileNotFoundException{
+      int count = 0;
+      char[][]maze = getFile(filename);
+      boolean animate = false;
+    }
     public void setAnimate(boolean b){
       animate = b;
     }
