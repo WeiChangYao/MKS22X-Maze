@@ -7,17 +7,20 @@ public class Maze{
     public static char[][] getFile(String fileName) throws FileNotFoundException{
       File f = new File(fileName);
       Scanner in = new Scanner(f);
-      ArrayList<String> scanFile = new ArrayList<String>();
+      int size = 0;
       while (in.hasNextLine()){
-        scanFile.add(in.nextLine());   //adds lines to array list
+        size++;
       }
-      int size = scanFile.size();
-      int sizeTwo = scanFile.get(0).length();
-      char[][] file = new char[size][sizeTwo];
-      for(int i = 0; i < size; i++){
-        for(int j = 0; j < sizeTwo; j++){
-          file[i][j] = scanFile.get(i).charAt(j);  //convert arrayList into a 2d array char by char
-        }
+      /*int sizeFull = 0;
+      while (in.hasNext()){
+        sizeFull++;
+      }*/
+      //int sizeTwo = sizeFull/size;
+      Scanner inn = new Scanner(f);
+      char[][] file = new char[size][];
+      for(int i = 0; inn.hasNext() ; i++){
+        	String line = inn.nextLine();
+          file[i] = line.toCharArray();;  //convert arrayList into a 2d array char by char
       }
       return file;
     }
@@ -129,10 +132,9 @@ public class Maze{
     }
 
 	public static void main(String[] args){
-
 		try {
-			System.out.println(getFile("Maze1.txt"));
-
+      Maze m = new Maze("Maze1.txt");
+			System.out.println(m));
 		} catch (FileNotFoundException e) {}
 	}
   
